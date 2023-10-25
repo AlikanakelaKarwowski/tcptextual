@@ -1,0 +1,15 @@
+TCPTextual {
+    layout: horizontal;
+    min-width: 50;
+    margin: 0 1 0 1;
+    padding: 1;
+    height: 5;
+    background: $boost;
+}
+#submit {
+    margin: 1 1 1 1;
+    width: 100%;
+}
+Label {
+    margin: 0 1 0 1;
+}
