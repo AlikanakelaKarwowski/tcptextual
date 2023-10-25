@@ -1,0 +1,1 @@
+[{"command_name": "kill", "keys": ["k"], "duration": 1.0, "cooldown": 30.0, "chance": 0.5}, {"command_name": "everyone", "keys": ["e"], "duration": 1.0, "cooldown": 30.0, "chance": 0.5}, {"command_name": "you", "keys": ["y"], "duration": 1.0, "cooldown": 1.0, "chance": 0.5}, {"command_name": "see", "keys": ["s"], "duration": 1.0, "cooldown": 1.0, "chance": 0.5}]
