@@ -1,7 +1,8 @@
-from textual.app import App
 from textual import on
+from textual.app import App
 from textual.screen import Screen
-from textual.widgets import Static, Label, Input, Button, Footer, Header
+from textual.widgets import Button, Footer, Header, Input, Label
+
 
 class Setup(Screen):
 
