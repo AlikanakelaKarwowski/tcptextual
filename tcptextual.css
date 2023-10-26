@@ -11,5 +11,17 @@ TCPTextual {
     width: 100%;
 }
 Label {
-    margin: 0 1 0 1;
+    margin: 1 1 1 1;
+}
+Key_Config {
+    layout: grid;
+    grid-size: 2;
+    grid-gutter: 1;
+    margin: 1 1 1 1;
+    height: 35%;
+}
+
+#generate {
+    width: 100%;
+    margin: 1 1 1 1;
 }
