@@ -1,18 +1,21 @@
 from textual.app import App
-from textual.containers import ScrollableContainer
+from textual.containers import VerticalScroll, Grid
 from textual.screen import Screen
 from config_generator import create_config, Controller_Config
-from textual.widgets import Button, Footer, Header, Static, Input, Label
+from textual.widgets import Button,  Header, Static, Input, Label
 class Config(Screen):
     def compose(self):
         yield Header(show_clock=True)
-        with ScrollableContainer(id="configs"):
+        with VerticalScroll(id="configs"):
             yield Path()
             yield Key_Config()
             yield Key_Config()
             yield Key_Config()
             yield Key_Config()
-        yield Button("Generate", id="generate")
+        yield Button("Add Key Config", id="add_key", variant="primary")
+        yield Button("Generate", id="generate", variant="success")
+
+    
 
 class Path(Static):
     folder = "config"
@@ -27,10 +30,14 @@ class Path(Static):
 class Key_Config(Static):
 
     def compose(self):
-        yield Label("Command: ", id="command_label")
-        yield Static("For Multi-Key commands, seperate each key with a comma.")
+        # with Grid(id="key_config"):
+        yield Static("Command: ")
         yield Input(placeholder="Command Name", id="command_name")
-        yield Input(placeholder="Keys", id="keys")
+        yield Static("Keys: ")
+        yield Input(placeholder="Key(s) seperated by a comma", id="keys")
+        yield Static("Duration: ")
         yield Input(placeholder="Duration (Seconds)", id="duration")
-        yield Input(placeholder="Chance (0-1,Optional)", id="chance")
+        yield Static("Chance: ")
+        yield Input(placeholder="Chance (0-1, Optional)", id="chance")
+        yield Static("Cooldown: ")
         yield Input(placeholder="Cooldown (Seconds, Optional)", id="cooldown")
