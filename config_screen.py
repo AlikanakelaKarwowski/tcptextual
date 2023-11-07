@@ -12,8 +12,32 @@ class Config(Screen):
         yield Button("Add Key Config", id="add_key", variant="primary")
         yield Button("Generate", id="generate", variant="success")
 
-    
+    @on(Button.Pressed, "#add_key")
+    def add_key(self):
+        self.query_one("#configs").mount(Key_Config())
 
+    @on(Button.Pressed, "#generate")
+    def generate(self):
+        controller_configs: Controller_Config = []
+        folder = self.query_one(Path).query_one("#folder").value
+        filename = self.query_one(Path).query_one("#filename").value
+        configs = self.query(Key_Config)
+        for config in configs:
+            children = config.query(Input)
+            for child in children:
+                if child.id == "command_name":
+                    command_name = child.value
+                if child.id == "keys":
+                    keys = child.value.split(",")
+                if child.id == "duration":
+                    duration = float(child.value)
+                if child.id == "chance":
+                    chance = float(child.value)
+                if child.id == "cooldown":
+                    cooldown = float(child.value)
+            controller_configs.append(Controller_Config(command_name=command_name, keys=keys, duration=duration, cooldown=cooldown, chance=chance))
+        create_config(controller_configs, filename, folder)
+        self.dismiss((filename, folder))
 class Path(Static):
     folder = "config"
     filename = "test"
