@@ -39,9 +39,7 @@ class Config(Screen):
         create_config(controller_configs, filename, folder)
         self.dismiss((filename, folder))
 class Path(Static):
-    folder = "config"
-    filename = "test"
-
+    
     def compose(self):
         yield Label("Folder: (Default: config)")
         yield Input("config", id="folder")
@@ -51,7 +49,6 @@ class Path(Static):
 class Key_Config(Static):
 
     def compose(self):
-        # with Grid(id="key_config"):
         yield Static("Command: ")
         yield Input(placeholder="Command Name", id="command_name")
         yield Static("Keys: ")
