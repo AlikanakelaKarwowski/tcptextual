@@ -25,8 +25,13 @@ class TCPTextual(App):
         def get_setup(data:tuple[str,str,str]):
             self.token, self.client_id, self.channel = data
             log(f"Token: {self.token}, Client ID: {self.client_id}, Channel: {self.channel}")
+            self.push_screen("config", get_config)
         
-        self.push_screen("config")
+        def get_config(data:tuple[str,str]):
+            self.filename, self.folder = data
+            log(f"Token: {self.filename}, Client ID: {self.folder}")
+
+        self.push_screen("setup", get_setup)
         
     
 if __name__ == "__main__":
