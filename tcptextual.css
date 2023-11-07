@@ -13,15 +13,29 @@ TCPTextual {
 Label {
     margin: 1 1 1 1;
 }
+
 Key_Config {
     layout: grid;
-    grid-size: 2;
+    grid-size: 6;
     grid-gutter: 1;
-    margin: 1 1 1 1;
-    height: 35%;
+    grid-columns: 3fr;
+    margin: 1 0 1 1;
+    grid-rows: auto;
+    border: heavy rgb(93, 93, 93);
 }
 
+Key_Config > Static {
+    margin: 1 0 1 1;
+    column-span: 1;
+}
+Key_Config > Input {
+    column-span: 2;
+}
 #generate {
+    width: 100%;
+    margin: 1 1 1 1;
+}
+#add_key {
     width: 100%;
     margin: 1 1 1 1;
 }
