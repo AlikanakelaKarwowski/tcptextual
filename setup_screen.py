@@ -6,10 +6,6 @@ from textual.widgets import Button, Footer, Header, Input, Label
 
 class Setup(Screen):
 
-    token = ""
-    client_id = ""
-    channel = ""
-
     def compose(self):
         yield Header(show_clock=True)
         yield Label("Access Token:")
@@ -22,8 +18,8 @@ class Setup(Screen):
         yield Footer()
     @on(Button.Pressed, "#submit")
     def submit(self):
-        self.token = self.query_one("#token").value 
-        self.client_id = self.query_one("#client_id").value
-        self.channel = self.query_one("#channel").value
-        self.dismiss((self.token, self.client_id, self.channel))
+        token = self.query_one("#token").value 
+        client_id = self.query_one("#client_id").value
+        channel = self.query_one("#channel").value
+        self.dismiss((token, client_id, channel))
         
