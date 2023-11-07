@@ -10,9 +10,9 @@ class Controller_Config(BaseModel):
     chance: float | None
 
 
-def create_config(configs: list[Controller_Config], config_name:str,  path:str | None) -> list[Controller_Config]:
+def create_config(configs: list[Controller_Config], filename:str,  folder:str | None) -> None:
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(script_dir, path, f"{config_name}.json")
+    file_path = os.path.join(script_dir, folder, f"{filename}.json")
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, 'w+') as f:
         serialized = json.dumps(configs, default=pydantic_encoder)
