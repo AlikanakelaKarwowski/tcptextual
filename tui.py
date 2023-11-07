@@ -1,6 +1,7 @@
 from textual import log
 from textual.app import App
-from textual.widgets import Footer, Header
+from textual.widgets import Footer, Header, Static, Button
+from textual.containers import Grid, Container, Center 
 
 from setup_screen import Setup
 from config_screen import Config
@@ -14,7 +15,19 @@ class TCPTextual(App):
 
     def compose(self):
         yield Header(show_clock=True)
-        yield Footer()
+        with Container(id="homescreen"):
+            yield Center(Button("1 Click Setup (Recommended)", id="setup_btn", variant="success"))
+
+            with Container(id="individual_steps"):
+                is_label = Static("Individual Steps", id="is_label")
+                is_label.border_subtitle = "Advanced Users Only"
+                yield Center(is_label)
+                with Container(id="btn_container"):
+                    yield Button("Bot Setup", id="bot_setup")
+                    yield Button("Command & Key Config", id="bot_key_config")
+                    yield Button("Run Twitch Chat Plays", id="run")
+            yield Center(Static("Support me by buying me hot chocolate or giving me a job :P"))
+        # yield Footer()
 
     def on_mount(self) -> None:
         self.title = "Twitch Chat Plays"
@@ -31,7 +44,7 @@ class TCPTextual(App):
             self.filename, self.folder = data
             log(f"Token: {self.filename}, Client ID: {self.folder}")
 
-        self.push_screen("setup", get_setup)
+        # self.push_screen("setup", get_setup)
         
     
 if __name__ == "__main__":
