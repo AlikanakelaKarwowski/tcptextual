@@ -39,3 +39,32 @@ Key_Config > Input {
     width: 100%;
     margin: 1 1 1 1;
 }
+
+#homescreen {
+    margin: 1 1 1 1;
+}
+
+#is_label {
+    border: heavy rgb(0, 69, 120);
+    width: 50%;
+    text-align: center;
+}
+#setup_btn {
+    width: 50%;
+}
+#individual_steps {
+    border: round rgb(93, 93, 93);
+}
+#btn_container {
+    margin: 1 0 1 2;
+    layout: grid;
+    grid-size: 3;
+    grid-gutter: 1;
+}
+#btn_container > Button {
+    width: 90%;
+}
+
+* {
+    /* border: solid green; */
+}
